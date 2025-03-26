@@ -2,6 +2,10 @@
 
 This repository contains code for simulating quantum spin liquids, particularly the mixed-field toric code model, using approximately-symmetric neural network quantum states (NQS). The implementation demonstrates competitive performance with state-of-the-art tensor network and quantum Monte Carlo methods, while enabling exploration of Hamiltonians with sign problems beyond the reach of traditional methods.
 
+![Summary of the approximately-symmetric neural network architecture and its performance](summary_figure.png)
+
+*See Fig. 1 in [arXiv:2405.17541](https://arxiv.org/pdf/2405.17541)*
+
 ## Overview
 
 Quantum spin liquids represent exotic phases of strongly-correlated matter exhibiting long-range entanglement and fractionalization. This code implements approximately-symmetric neural networks that are parameter-efficient, scalable, and outperform existing symmetry-unaware neural network architectures. The network comprises an exactly symmetric block following a non-symmetric block, which learns a transformation of the ground state analogous to quasiadiabatic continuation.
@@ -10,9 +14,6 @@ The implementation uses:
 - JAX for automatic differentiation and GPU acceleration
 - NetKet for quantum many-body simulations
 - Flax for building neural network architectures
-
-![Summary of the approximately-symmetric neural network architecture and its performance](summary_figure.png)
-*See Fig. 1 in [arXiv:2405.17541](https://arxiv.org/pdf/2405.17541)*
 
 ## Features
 
@@ -106,37 +107,17 @@ The simulation outputs the following files:
 - `.json`: Contains simulation data, including energies, observables, and parameters
 - `.mpack`: Serialized model parameters
 
-## Advanced Sampling
-
-For larger systems or those with strong correlations, the custom sampler can significantly improve sampling efficiency:
-
-```bash
-python main.py --outindex 1 --jobid test01 --Lx 4 --hx 0.3 --hy 0.0 --hz 0.0 --dt 0.01 --diag_shift 1e-5 --channels_noninv 1,16 --channels_inv 16,8,1 --kernel_size 1 --n_samples_fin 4096 --use_custom_sampler
-```
-
 The custom sampler implements:
 - Single-site updates: Standard local flips of individual qubits
 - Vertex updates: Simultaneous flips of all qubits connected to a vertex
 - Weighted combination: Automatically balances between the two update types
-
-## Observables
-
-The code calculates several physical observables:
-
-- **Wilson loops**: Both X and Z Wilson loops are calculated, measuring string operators along closed loops
-- **Magnetization**: Measures magnetization in X, Y, and Z directions
-- **Renyi entropy**: Calculates second Renyi entropy for a subsystem
-- **2-point correlators**: Calculates XX and ZZ correlators (currently disabled by default)
-
-For systems with Lx ≤ 6, only magnetization is calculated during the simulation to save time.
-For larger systems, all observables are calculated at the end of the simulation.
 
 ## Example
 
 To run a simulation of a 4x4 toric code with x-field perturbation and custom sampling:
 
 ```bash
-python main.py --outindex 1 --jobid test01 --Lx 4 --bc OBC --hx 0.2 --hy 0.0 --hz 0.2 --dt 0.01 --diag_shift 6e-5 --channels_noninv 1,16 --channels_inv 16,8,1 --kernel_size 2 --n_samples_fin 4096 --sim_time 4.0 --use_custom_sampler
+python main.py --outindex 1 --jobid test --Lx 4 --hx 0.2 --hy 0.0 --hz 0.2 --dt 0.01 --diag_shift 6e-5 --channels_noninv 1,16 --channels_inv 16,8,1 --kernel_size 2 --n_samples_fin 8192 --use_custom_sampler
 ```
 
 ## Citation
@@ -151,7 +132,3 @@ If you use this code in your research, please cite:
   year={2024}
 }
 ```
-
-## License
-
-This project is licensed under the MIT License - see the LICENSE file for details. 
