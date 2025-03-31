@@ -35,7 +35,6 @@ approx-sym-nqs/
 ├── main.py                      # Main entry point for simulations
 ├── requirements.txt             # Python package dependencies
 ├── environment.yml              # Conda environment specification
-├── Gequiv_16x16_cluster.py     # Reference implementation
 ├── model/                       # Core model components
 │   ├── __init__.py
 │   ├── geometry.py             # Lattice geometry and stabilizers
