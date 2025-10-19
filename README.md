@@ -1,5 +1,7 @@
 # Approximately-symmetric neural quantum states for quantum spin liquids
 
+Implementation of [*Phys. Rev. Lett. 135, 056702 (Editor's Suggestion)](https://journals.aps.org/prl/abstract/10.1103/pgnx-11ph)*
+
 This repository contains code for simulating quantum spin liquids, particularly the mixed-field toric code model, using approximately-symmetric neural network quantum states (NQS). The implementation demonstrates competitive performance with state-of-the-art tensor network and quantum Monte Carlo methods, while enabling exploration of Hamiltonians with sign problems beyond the reach of traditional methods.
 
 ![Summary of the approximately-symmetric neural network architecture and its performance](summary_figure.png)
