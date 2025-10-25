@@ -128,10 +128,14 @@ python main.py --outindex 1 --jobid test --Lx 4 --hx 0.2 --hy 0.0 --hz 0.2 --dt 
 If you use this code in your research, please cite:
 
 ```
-@article{kufel2024approx,
-  title={Approximately-symmetric neural networks for quantum spin liquids},
-  author={Kufel, Dominik S. and Kemp, Jack and Linsel, Simon M. and Laumann, Chris R. and Yao, Norman Y.},
-  journal={arXiv preprint arXiv:2405.17541},
-  year={2024}
+@article{kufel2025approximately,
+  title={Approximately symmetric neural networks for quantum spin liquids},
+  author={Kufel, Dominik S and Kemp, Jack and Vu, DinhDuy and Linsel, Simon M and Laumann, Chris R and Yao, Norman Y},
+  journal={Physical Review Letters},
+  volume={135},
+  number={5},
+  pages={056702},
+  year={2025},
+  publisher={APS}
 }
 ```
